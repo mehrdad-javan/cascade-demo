@@ -14,6 +14,7 @@ public class Person {
 
     private String name;
 
+    //@OneToMany(mappedBy = "owner", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.REMOVE})
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Phone> phones = new ArrayList<>();
 

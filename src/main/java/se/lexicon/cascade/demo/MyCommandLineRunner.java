@@ -20,7 +20,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         ex1();
-        ex2();
+        //ex2();
         ex3();
         ex4();
     }
@@ -30,7 +30,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
     // The CascadeType.PERSIST allows us to persist a child entity along with the parent one.
     private void ex1() {
         Person person = new Person();
-        person.setName("Mehrdad Javan");
+        person.setName("Mehrdad Test");
 
         Phone phone = new Phone();
         phone.setNumber("123456789");
@@ -54,7 +54,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         entityManager.merge(person);
     }
 
-    // CascadeType.MERGE example
+    // CascadeType.REFRESH example
     /*
     The CascadeType.REFRESH is used to propagate the refresh operation from a parent entity to a child.
     The refresh operation will discard the current entity state, and it will override it using the one loaded from the database.
