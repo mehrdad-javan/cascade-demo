@@ -19,15 +19,11 @@ public class MyCommandLineRunner implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        ex1();
-        //ex2();
-        ex3();
-        ex4();
+
     }
 
 
-    // CascadeType.PERSIST example
-    // The CascadeType.PERSIST allows us to persist a child entity along with the parent one.
+    // The CascadeType.PERSIST
     private void ex1() {
         Person person = new Person();
         person.setName("Mehrdad Test");
@@ -40,8 +36,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         entityManager.persist(person);
     }
 
-    // CascadeType.MERGE example
-    // The CascadeType.MERGE allows us to merge a child entity along with the parent one.
+    // The CascadeType.MERGE
     private void ex2() {
         Phone phone = entityManager.find(Phone.class, 1L);
         Person person = phone.getOwner();
@@ -55,10 +50,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
     }
 
     // CascadeType.REFRESH example
-    /*
-    The CascadeType.REFRESH is used to propagate the refresh operation from a parent entity to a child.
-    The refresh operation will discard the current entity state, and it will override it using the one loaded from the database.
-     */
     private void ex3() {
         Person person = entityManager.find(Person.class, 1L);
         Phone phone = person.getPhones().get(0);
@@ -73,11 +64,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
 
     // CascadeType.DETACH example
-    /*
-        DETACH plays the role when more than one entity is associated to each other.
-        CascadeType.DETACH cascades the detach operation to all associated entities detach from hibernate session.
-        If one entity is detached, other associated entities will also be detached if CascadeType.
-    */
     private void ex4() {
         Person person = entityManager.find(Person.class, 1L);
         Phone phone = person.getPhones().get(0);
@@ -92,8 +78,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
         Person person2 = entityManager.find(Person.class, 1L);
 
     }
-
-
 
     // https://www.javaguides.net/2018/11/guide-to-jpa-and-hibernate-cascade-types.html
     // https://www.sourcecodeexamples.net/2020/02/jpa-cascade-types-with-examples.html
